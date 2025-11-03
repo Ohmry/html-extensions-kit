@@ -1,14 +1,15 @@
 {
   "name": "html-extensions-kit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A library that provides extended HTML elements for web development.",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "npm-run-all --parallel dev:vite dev:namespace",
     "dev:vite": "vite",
-    "dev:namespace": "chokidar 'src/**/*.ts' -c 'wca analyze src --format vscode --outDir .vscode && mv .vscode/primera-input-field.json .vscode/primera-elements.json'",
-    "build": "tsc && pnpm run lint && vite build && pnpm run format",
+    "dev:namespace": "chokidar 'src/**/*.ts' -c 'wca analyze src --format vscode --outDir .vscode && mv .vscode/ext-text-field.json .vscode/html-extension-elements.json'",
+    "build:docs": "ts-node src/lib/document-index-generator.ts",
+    "build": "tsc && pnpm run build:docs && pnpm run lint && vite build",
     "lint": "prettier . --write && eslint . --fix",
     "format": "prettier . --write",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,10 +39,15 @@
     "jsdom": "^27.1.0",
     "npm-run-all": "^4.1.5",
     "prettier": "3.6.2",
+    "terser": "^5.44.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.2",
     "vite": "^7.1.12",
     "vite-plugin-dts": "^4.5.4",
     "web-component-analyzer": "^2.0.0"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.13.1",
+    "ts-node": "^10.9.2"
   }
 }

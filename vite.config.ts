@@ -8,8 +8,16 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'HTMLExtensionKit',
-      fileName: 'html-extensions-kit.min',
-      formats: ['es']
+      fileName: (format) => {
+        switch (format) {
+          case 'umd':
+            return 'html-extensions-kit.min.js';
+          case 'es':
+            return 'html-extensions-kit.js';
+          default:
+            return `html-extensions-kit.${format}.js`;
+        }
+      }
     },
     rollupOptions: {
       external: [],

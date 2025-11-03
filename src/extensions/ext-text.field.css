@@ -1,0 +1,39 @@
+@import '../theme/basic.css';
+
+ext-text-field {
+  position: relative;
+  display: block;
+  background-color: #fff;
+  border: 1px solid var(--border-color, #333);
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: border 0.2s;
+  color: var(--text-color, #333);
+}
+
+ext-text-field.focused {
+  border: 1px solid var(--primary-color, #000);
+}
+
+ext-text-field > div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 8px;
+}
+
+ext-text-field > div > input {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+ext-text-field > div > i {
+  flex-shrink: 0;
+  color: var(--text-color, #333);
+  font-size: 1.1rem;
+}

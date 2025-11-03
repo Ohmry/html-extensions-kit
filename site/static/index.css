@@ -1,0 +1,110 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  display: flex;
+  flex-direction: row;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  font-size: 15px;
+}
+
+nav {
+  position: relative;
+  width: 250px;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 10px 0;
+  border-right: 1px solid #ddd;
+  overflow: scroll;
+}
+
+nav > h1 {
+  font-size: 1.2rem;
+  margin: 0.67rem 0 0 0;
+  padding: 0 10px;
+}
+
+nav > version {
+  font-size: 0.8rem;
+  margin: 0 0 10px 0;
+  padding: 0 10px;
+  color: #555;
+  font-style: italic;
+}
+
+nav > h2 {
+  font-size: 1rem;
+  margin: 1rem 0 0.5rem 0;
+  padding: 0 10px 0.5rem 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+nav > ul {
+  margin: 0;
+  padding: 0 10px 0 40px;
+  list-style-type: decimal;
+}
+
+nav > ul > li {
+  color: #333;
+}
+
+nav > ul > li:not(:last-child) {
+  margin: 0 0 10px 0;
+}
+
+nav > ul > li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+nav > ul > li:active {
+  transform: translateY(1px);
+}
+
+main {
+  position: relative;
+  padding: 20px;
+  flex: 1;
+}
+
+main > ul {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 30px;
+}
+
+main > ul > li:not(:last-child) {
+  margin: 0 0 5px 0;
+}
+
+main > h3 {
+  font-size: 1rem;
+}
+
+main > code {
+  position: relative;
+  display: block;
+  margin: 20px 0;
+  padding: 10px 15px;
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+main > table {
+  position: relative;
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+main > table th,
+main > table td {
+  border: 1px solid #aaa;
+  text-align: left;
+  padding: 10px;
+}
+main > table th {
+  background-color: #ddd;
+}
