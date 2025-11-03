@@ -26,6 +26,33 @@
           "description": "`suffix-icon` {} - \n\n"
         }
       ]
+    },
+    {
+      "name": "ext-button",
+      "description": "Events:\n\n  * `click` {`CustomEvent<MouseEvent>`} - \n\nAttributes:\n\n  * `label` {`string`} - \n\n  * `outlined` {`boolean`} - \n\n  * `prefix-icon` {} - \n\n  * `suffix-icon` {} - \n\nProperties:\n\n  * `prefixIcon` {`string`} - \n\n  * `suffixIcon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `outlined` {`boolean`} - \n\n  * `_label` {`string`} - \n\n  * `_outlined` {`boolean`} - \n\n  * `_prefixIcon` {`string`} - \n\n  * `_prefixIconElement` {`HTMLElement | null`} - \n\n  * `_suffixIcon` {`string`} - \n\n  * `_suffixIconElement` {`HTMLElement | null`} - \n\n  * `_buttonElement` {`HTMLButtonElement`} - \n\n  * `_labelElement` {`HTMLSpanElement`} - \n\n  * `_onClickHandler` - ",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label"
+        },
+        {
+          "name": "outlined",
+          "description": "`outlined` {`boolean`} - \n\nProperty: outlined",
+          "valueSet": "v"
+        },
+        {
+          "name": "prefix-icon",
+          "description": "`prefix-icon` {} - \n\n"
+        },
+        {
+          "name": "suffix-icon",
+          "description": "`suffix-icon` {} - \n\n"
+        },
+        {
+          "name": "onclick",
+          "description": "`click` {`CustomEvent<MouseEvent>`} - "
+        }
+      ]
     }
   ],
   "globalAttributes": [],

@@ -4,7 +4,7 @@ import { JSDOM } from 'jsdom';
 
 const __dirname = path.resolve();
 const docsDir = path.resolve(__dirname, './site/docs/extensions');
-const files = fs.readdirSync(docsDir).filter((f) => f.endsWith('.html'));
+const files = fs.readdirSync(docsDir).filter((f) => f.endsWith('.md'));
 
 const packagePath = path.resolve(__dirname, './package.json');
 const packageFile = fs.readFileSync(packagePath, 'utf-8');
@@ -36,11 +36,8 @@ files
   .forEach((file) => {
     const li = document.createElement('li');
     li.dataset.link = `./site/docs/extensions/${file}`;
-    const baseName = file.replace('.html', '');
-    li.textContent = baseName
-      .split('-')
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-      .join(' ');
+    const baseName = file.replace('.md', '');
+    li.textContent = `<${baseName}>`;
     list.appendChild(li);
   });
 

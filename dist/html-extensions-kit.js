@@ -8,6 +8,125 @@ class HTMLExtensionElement extends HTMLElement {
    */
   // static get observedAttributes(): string[] { return []; }
 }
+class ExtButton extends HTMLExtensionElement {
+  _label;
+  _outlined;
+  _prefixIcon;
+  _suffixIcon;
+  _buttonElement;
+  _labelElement;
+  _prefixIconElement;
+  _suffixIconElement;
+  _onClickHandler;
+  constructor() {
+    super();
+    this._label = "";
+    this._outlined = false;
+    this._prefixIcon = "";
+    this._prefixIconElement = null;
+    this._suffixIcon = "";
+    this._suffixIconElement = null;
+    this._buttonElement = document.createElement("button");
+    this._buttonElement.type = "button";
+    this._buttonElement.textContent = this._label;
+    this._labelElement = document.createElement("span");
+    this._onClickHandler = (e) => this.dispatchEvent(
+      new CustomEvent("click", {
+        detail: e
+      })
+    );
+  }
+  static get observedAttributes() {
+    return ["label", "outlined", "prefix-icon", "suffix-icon"];
+  }
+  connectedCallback() {
+    this._buttonElement.addEventListener("click", this._onClickHandler);
+    this.render();
+  }
+  disconnectedCallback() {
+    this._buttonElement.removeEventListener("click", this._onClickHandler);
+  }
+  attributeChangedCallback(name, _, newValue) {
+    switch (name) {
+      case "label":
+        this.label = newValue;
+        break;
+      case "outlined":
+        this._outlined = true;
+        break;
+      case "prefix-icon":
+        this._prefixIcon = newValue || "";
+        break;
+      case "suffix-icon":
+        this._suffixIcon = newValue || "";
+        break;
+    }
+  }
+  adoptedCallback() {
+    return;
+  }
+  render() {
+    this._labelElement.textContent = this._label;
+    if (this._outlined) {
+      this._buttonElement.classList.add("outlined");
+    }
+    if (this._prefixIcon !== "") {
+      if (this._prefixIconElement === null) {
+        this._prefixIconElement = document.createElement("i");
+      }
+      this._prefixIconElement.className = `bi bi-${this._prefixIcon}`;
+    } else if (this._prefixIconElement !== null) {
+      this._prefixIconElement.remove();
+      this._prefixIconElement = null;
+    }
+    if (this._suffixIcon !== "") {
+      if (this._suffixIconElement === null) {
+        this._suffixIconElement = document.createElement("i");
+      }
+      this._suffixIconElement.className = `bi bi-${this._suffixIcon}`;
+    } else if (this._suffixIconElement !== null) {
+      this._suffixIconElement.remove();
+      this._suffixIconElement = null;
+    }
+    this.innerHTML = "";
+    if (this._prefixIconElement !== null) {
+      this._buttonElement.appendChild(this._prefixIconElement);
+    }
+    this._buttonElement.appendChild(this._labelElement);
+    if (this._suffixIconElement !== null) {
+      this._buttonElement.appendChild(this._suffixIconElement);
+    }
+    this.appendChild(this._buttonElement);
+  }
+  get label() {
+    return this._label;
+  }
+  set label(v) {
+    this._label = v || "";
+    this.render();
+  }
+  get outlined() {
+    return this._outlined;
+  }
+  set outlined(v) {
+    this._outlined = v;
+    this.render();
+  }
+  get prefixIcon() {
+    return this._prefixIcon;
+  }
+  set prefixIcon(v) {
+    this._prefixIcon = v || "";
+    this.render();
+  }
+  get suffixIcon() {
+    return this._suffixIcon;
+  }
+  set suffixIcon(v) {
+    this._suffixIcon = v || "";
+    this.render();
+  }
+}
 class ExtTextField extends HTMLExtensionElement {
   _value;
   _type;
@@ -138,4 +257,5 @@ class ExtTextField extends HTMLExtensionElement {
   }
 }
 customElements.define("ext-text-field", ExtTextField);
+customElements.define("ext-button", ExtButton);
 //# sourceMappingURL=html-extensions-kit.js.map

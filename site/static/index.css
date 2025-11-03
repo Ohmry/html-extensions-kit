@@ -80,17 +80,30 @@ main > ul > li:not(:last-child) {
   margin: 0 0 5px 0;
 }
 
+main > h2 {
+  margin: 2rem 0 1rem 0;
+  padding: 0 0 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
 main > h3 {
   font-size: 1rem;
 }
 
-main > code {
+main > p {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+main code {
   position: relative;
   display: block;
-  margin: 20px 0;
-  padding: 10px 15px;
-  background-color: #ddd;
+  padding: 0;
+  /* background-color: #ddd; */
   border-radius: 10px;
+  font-family: 'Noto Sans', sans-serif !important;
+  font-style: italic;
 }
 
 main > table {

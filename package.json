@@ -1,6 +1,6 @@
 {
   "name": "html-extensions-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A library that provides extended HTML elements for web development.",
   "type": "module",
   "main": "index.js",
