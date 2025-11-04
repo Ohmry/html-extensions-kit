@@ -10,20 +10,21 @@
 
 ### Basic
 
-`<ext-text-field></ext-text-field>`
 <ext-text-field style="width: 240px"></ext-text-field>
+`<ext-text-field></ext-text-field>`
 
 ### With placeholder
 
-`<ext-text-field placeholder="This is placeholder"></ext-text-field>`
 <ext-text-field style="width: 240px" placeholder="This is placeholder"></ext-text-field>
+`<ext-text-field placeholder="This is placeholder"></ext-text-field>`
 
 ### With icon
 
-`<ext-text-field prefix-icon="person"></ext-text-field>`
 <ext-text-field style="width: 240px" prefix-icon="person"></ext-text-field>
-`<ext-text-field suffix-icon="person"></ext-text-field>`
+`<ext-text-field prefix-icon="person"></ext-text-field>`
+
 <ext-text-field style="width: 240px" suffix-icon="person"></ext-text-field>
+`<ext-text-field suffix-icon="person"></ext-text-field>`
 
 # Properties
 

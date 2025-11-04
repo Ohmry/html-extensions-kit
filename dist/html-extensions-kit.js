@@ -127,6 +127,124 @@ class ExtButton extends HTMLExtensionElement {
     this.render();
   }
 }
+class ExtSelectbox extends HTMLExtensionElement {
+  _value;
+  _label;
+  _dataList;
+  _containerElement;
+  _downIconElement;
+  _valueElement;
+  _itemContainerElement;
+  _itemElements;
+  _isItemContainerOpen;
+  _onBlurHandler;
+  _onContainerMouseOverHandler;
+  _onContainerMouseOutHandler;
+  _onContainerClickHandler;
+  _onItemClickHandler;
+  constructor() {
+    super();
+    this._dataList = Array.from(this.querySelectorAll("option")).map((option) => ({
+      label: option.textContent || "",
+      value: option.value
+    }));
+    this._value = this._dataList[0]?.value || "";
+    this._label = this._dataList[0]?.label || "";
+    this._containerElement = document.createElement("div");
+    this._containerElement.className = "ext-selectbox-container";
+    this._downIconElement = document.createElement("i");
+    this._downIconElement.className = "bi bi-chevron-down";
+    this._valueElement = document.createElement("span");
+    this._itemContainerElement = document.createElement("div");
+    this._itemContainerElement.className = "ext-selectbox-item-container";
+    this._itemElements = this._dataList.map((data) => {
+      const element = document.createElement("div");
+      element.dataset.value = data.value;
+      element.textContent = data.label;
+      return element;
+    });
+    this._isItemContainerOpen = false;
+    this._onBlurHandler = (e) => {
+      if (!this._containerElement.contains(e.target) && !this._itemContainerElement.contains(e.target)) {
+        this._isItemContainerOpen = false;
+        this.render();
+      }
+    };
+    this._onContainerMouseOverHandler = () => this._containerElement.classList.add("focused");
+    this._onContainerMouseOutHandler = () => this._containerElement.classList.remove("focused");
+    this._onContainerClickHandler = () => {
+      this._isItemContainerOpen = !this._isItemContainerOpen;
+      this.render();
+    };
+    this._onItemClickHandler = (e) => {
+      const item = e.target;
+      this._isItemContainerOpen = false;
+      this.value = item.dataset.value || "";
+      this._label = item.textContent || "";
+      this.render();
+    };
+  }
+  connectedCallback() {
+    this.render();
+    document.addEventListener("mousedown", this._onBlurHandler);
+    this._containerElement.addEventListener("mouseover", this._onContainerMouseOverHandler);
+    this._containerElement.addEventListener("mouseout", this._onContainerMouseOutHandler);
+    this._containerElement.addEventListener("click", this._onContainerClickHandler);
+    this._itemElements.forEach(
+      (element) => element.addEventListener("click", this._onItemClickHandler)
+    );
+  }
+  disconnectedCallback() {
+    document.removeEventListener("mousedown", this._onBlurHandler);
+    this._containerElement.removeEventListener("mouseover", this._onContainerMouseOverHandler);
+    this._containerElement.removeEventListener("mouseout", this._onContainerMouseOutHandler);
+    this._containerElement.removeEventListener("click", this._onContainerClickHandler);
+    this._itemElements.forEach(
+      (element) => element.removeEventListener("click", this._onItemClickHandler)
+    );
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case "value":
+        if (oldValue != newValue) {
+          const item = this._dataList.find((item2) => item2.value === newValue);
+          this._label = item?.label || "";
+          this.value = item?.value || "";
+        }
+        break;
+    }
+  }
+  adoptedCallback() {
+    throw new Error("Method not implemented.");
+  }
+  render() {
+    this._valueElement.textContent = this._label;
+    this.setAttribute("value", this._value);
+    this._containerElement.appendChild(this._valueElement);
+    this._containerElement.appendChild(this._downIconElement);
+    this.innerHTML = "";
+    this.appendChild(this._containerElement);
+    if (this._isItemContainerOpen) {
+      this._itemElements.forEach((element) => this._itemContainerElement.appendChild(element));
+      this.appendChild(this._itemContainerElement);
+    } else {
+      this._itemContainerElement.remove();
+    }
+  }
+  static get observedAttributes() {
+    return ["value"];
+  }
+  get value() {
+    return this._value;
+  }
+  set value(v) {
+    this._value = v;
+    this.render();
+  }
+  get dataList() {
+    return this._dataList;
+  }
+}
 class ExtTextField extends HTMLExtensionElement {
   _value;
   _type;
@@ -258,4 +376,5 @@ class ExtTextField extends HTMLExtensionElement {
 }
 customElements.define("ext-text-field", ExtTextField);
 customElements.define("ext-button", ExtButton);
+customElements.define("ext-selectbox", ExtSelectbox);
 //# sourceMappingURL=html-extensions-kit.js.map

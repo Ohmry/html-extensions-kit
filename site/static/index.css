@@ -36,7 +36,7 @@ nav > version {
 
 nav > h2 {
   font-size: 1rem;
-  margin: 1rem 0 0.5rem 0;
+  margin: 2rem 0 0.5rem 0;
   padding: 0 10px 0.5rem 10px;
   border-bottom: 1px solid #ddd;
 }
@@ -78,7 +78,7 @@ main > ul {
 }
 
 main > ul > li:not(:last-child) {
-  margin: 0 0 5px 0;
+  margin: 0 0 8px 0;
 }
 
 main > h2 {
@@ -91,6 +91,11 @@ main > h3 {
   font-size: 1rem;
 }
 
+main > h4 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
 main > p {
   display: flex;
   flex-direction: column;
@@ -100,11 +105,12 @@ main > p {
 main code {
   position: relative;
   display: block;
-  padding: 0;
-  /* background-color: #ddd; */
+  padding: 10px;
+  background-color: #dbdbdb;
   border-radius: 10px;
   font-family: 'Noto Sans', sans-serif !important;
   font-style: italic;
+  line-height: 1.5;
 }
 
 main > table {

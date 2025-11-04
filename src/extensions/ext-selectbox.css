@@ -1,0 +1,76 @@
+ext-selectbox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+ext-selectbox > .ext-selectbox-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 10px;
+  background-color: #fff;
+  border: 1px solid var(--border-color, #333);
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition:
+    border 0.2s,
+    color 0.2s;
+  color: var(--text-color, #333);
+}
+
+ext-selectbox > .ext-selectbox-container.focused {
+  border: 1px solid var(--primary-color, #000);
+}
+
+ext-selectbox > .ext-selectbox-container.focused > i {
+  color: var(--primary-color, #000);
+}
+
+ext-selectbox > .ext-selectbox-container > span {
+  position: relative;
+  flex: 1;
+}
+
+ext-selectbox > .ext-selectbox-container > i {
+  position: relative;
+  margin: 0 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+ext-selectbox > .ext-selectbox-item-container {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  gap: 5px;
+  background-color: #fff;
+  border: 1px solid var(--border-color, #333);
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition:
+    border 0.2s,
+    color 0.2s;
+  color: var(--text-color, #333);
+  cursor: pointer;
+}
+
+ext-selectbox > .ext-selectbox-item-container > div {
+  position: relative;
+  width: calc(100% - 30px);
+  padding: 5px 15px;
+}
+
+ext-selectbox > .ext-selectbox-item-container > div:hover {
+  background-color: var(--background-color-darken, #ddd);
+}

@@ -53,6 +53,16 @@
           "description": "`click` {`CustomEvent<MouseEvent>`} - "
         }
       ]
+    },
+    {
+      "name": "ext-selectbox",
+      "description": "Attributes:\n\n  * `value` {`string`} - \n\nProperties:\n\n  * `dataList` {`{ label: string; value: string; }[]`} - \n\n  * `value` {`string`} - \n\n  * `_dataList` {`{ label: string; value: string; }[]`} - \n\n  * `_value` {`string`} - \n\n  * `_label` {`string`} - \n\n  * `_containerElement` {`HTMLDivElement`} - \n\n  * `_downIconElement` {`HTMLElement`} - \n\n  * `_valueElement` {`HTMLSpanElement`} - \n\n  * `_itemContainerElement` {`HTMLDivElement`} - \n\n  * `_itemElements` {`HTMLDivElement[]`} - \n\n  * `_isItemContainerOpen` {`boolean`} - \n\n  * `_onBlurHandler` - \n\n  * `_onContainerMouseOverHandler` - \n\n  * `_onContainerMouseOutHandler` - \n\n  * `_onContainerClickHandler` - \n\n  * `_onItemClickHandler` - ",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "`value` {`string`} - \n\nProperty: value"
+        }
+      ]
     }
   ],
   "globalAttributes": [],

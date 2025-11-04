@@ -30,5 +30,11 @@ window.addEventListener('DOMContentLoaded', () => {
   documents.forEach((document) => {
     document.addEventListener('click', () => getDocs(document.dataset.link));
   });
-  getDocs('./site/docs/quick-start.md');
+
+  if (window.location.hash) {
+    console.log(window.location.hash.substring(1));
+    getDocs(`./site/docs/${window.location.hash.substring(1)}`);
+  } else {
+    getDocs('./site/docs/quick-start.md');
+  }
 });
