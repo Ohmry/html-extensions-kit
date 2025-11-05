@@ -1,40 +1,38 @@
 ext-button {
   position: relative;
   display: block;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-ext-button > button {
+ext-button > .ext-button-container {
   position: relative;
-  width: 100%;
+  width: fit-content;
   height: 100%;
   outline: 0;
   border: 0;
   border-radius: 10px;
-  background-color: #3d5e6b;
-  color: white;
+  background-color: var(--ext-primary-color);
+  color: var(--ext-text-color-reversed);
   padding: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-ext-button > button.outlined {
-  border: 1px solid #3d5e6b;
-  background-color: #fff;
-  color: #3d5e6b;
+ext-button > .ext-button-container.outlined {
+  border: 1px solid var(--ext-primary-color);
+  background-color: var(--ext-background-color);
+  color: var(--ext-primary-color);
   transition:
     background-color 0.2s,
+    border 0.2s,
     color 0.2s;
 }
 
-ext-button > button.outlined:hover {
-  background-color: #337d9b;
-  color: #fff;
-}
-
-ext-button:hover > button {
+ext-button:hover > .ext-button-container {
   cursor: pointer;
 }
 
@@ -42,7 +40,7 @@ ext-button:active {
   transform: translateY(1px);
 }
 
-ext-button > button > i {
+ext-button > .ext-button-container > i {
   display: flex;
   flex-direction: row;
   justify-content: center;

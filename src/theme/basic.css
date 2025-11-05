@@ -1,67 +1,26 @@
 :root {
-  --primary-color: #3d5e6b;
-  --primary-color-darken: #2c4148;
-  --primary-color-lighten: #5f95a8;
+  --ext-primary-color: rgb(50, 105, 255);
+  --ext-primary-color-extra-lighten: rgb(153, 178, 255);
+  --ext-primary-color-extra-darken: rgb(25, 53, 128);
+  --ext-primary-color-lighten: rgb(101, 153, 255);
+  --ext-primary-color-darken: rgb(25, 53, 128);
 
-  --border-color: #d5d0c4;
-  --border-color-draken: #d3c4aa;
-  --border-color-lighten: #dfdbd5;
-  --border-color-focused: #877c73;
+  --ext-border-color: rgb(201, 201, 201);
+  --ext-border-color-lighten: rgb(226, 226, 226);
+  --ext-border-color-darken: rgb(141, 141, 141);
+  --ext-border-color-extra-lighten: rgb(241, 241, 241);
+  --ext-border-color-extra-darken: rgb(101, 101, 101);
 
-  --text-color: #44474d;
+  --ext-background-color: rgb(255, 255, 255);
+  --ext-background-color-lighten: rgb(255, 255, 255);
+  --ext-background-color-darken: rgb(179, 179, 179);
+  --ext-background-color-extra-lighten: rgb(255, 255, 255);
+  --ext-background-color-extra-darken: rgb(128, 128, 128);
 
-  --background-color: #efefef;
-  --background-color-darken: #d5d0c4;
-  --background-color-lighten: #f7f7f7;
-}
-
-/* Color Theme Swatches in Hex */
-.Insta-Palette-Neutral-Peace-1-hex {
-  color: #3d5e6b;
-}
-.Insta-Palette-Neutral-Peace-2-hex {
-  color: #9ca5b1;
-}
-.Insta-Palette-Neutral-Peace-3-hex {
-  color: #d5d0c4;
-}
-.Insta-Palette-Neutral-Peace-4-hex {
-  color: #877c73;
-}
-.Insta-Palette-Neutral-Peace-5-hex {
-  color: #44474d;
-}
-
-/* Color Theme Swatches in RGBA */
-.Insta-Palette-Neutral-Peace-1-rgba {
-  color: rgba(61, 94, 107, 1);
-}
-.Insta-Palette-Neutral-Peace-2-rgba {
-  color: rgba(156, 165, 177, 1);
-}
-.Insta-Palette-Neutral-Peace-3-rgba {
-  color: rgba(213, 208, 196, 1);
-}
-.Insta-Palette-Neutral-Peace-4-rgba {
-  color: rgba(135, 124, 115, 1);
-}
-.Insta-Palette-Neutral-Peace-5-rgba {
-  color: rgba(68, 71, 77, 1);
-}
-
-/* Color Theme Swatches in HSLA */
-.Insta-Palette-Neutral-Peace-1-hsla {
-  color: hsla(196, 27, 32, 1);
-}
-.Insta-Palette-Neutral-Peace-2-hsla {
-  color: hsla(214, 11, 65, 1);
-}
-.Insta-Palette-Neutral-Peace-3-hsla {
-  color: hsla(42, 16, 80, 1);
-}
-.Insta-Palette-Neutral-Peace-4-hsla {
-  color: hsla(26, 7, 49, 1);
-}
-.Insta-Palette-Neutral-Peace-5-hsla {
-  color: hsla(219, 6, 28, 1);
+  --ext-text-color: rgb(51, 51, 51);
+  --ext-text-color-lighten: rgb(102, 102, 102);
+  --ext-text-color-darken: rgb(36, 36, 36);
+  --ext-text-color-extra-lighten: rgb(127, 127, 127);
+  --ext-text-color-extra-darken: rgb(25, 25, 25);
+  --ext-text-color-reversed: rgb(255, 255, 255);
 }

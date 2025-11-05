@@ -28,6 +28,32 @@
       ]
     },
     {
+      "name": "ext-text-field",
+      "description": "Attributes:\n\n  * `type` {`string`} - \n\n  * `value` {`string`} - \n\n  * `placeholder` {`string`} - \n\n  * `prefix-icon` {} - \n\n  * `suffix-icon` {} - \n\nProperties:\n\n  * `prefixIcon` {`string`} - \n\n  * `suffixIcon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `value` {`string`} - \n\n  * `placeholder` {`string`} - \n\n  * `_value` {`string`} - \n\n  * `_type` {`string`} - \n\n  * `_placeholder` {`string`} - \n\n  * `_prefixIcon` {`string`} - \n\n  * `_suffixIcon` {`string`} - \n\n  * `_containerElement` {`HTMLDivElement`} - \n\n  * `_inputElement` {`HTMLInputElement`} - \n\n  * `_prefixIconElement` {`HTMLElement | null`} - \n\n  * `_suffixIconElement` {`HTMLElement | null`} - \n\n  * `_onFocusHandler` - \n\n  * `_onBlurHandler` - ",
+      "attributes": [
+        {
+          "name": "type",
+          "description": "`type` {`string`} - \n\nProperty: type"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - \n\nProperty: value"
+        },
+        {
+          "name": "placeholder",
+          "description": "`placeholder` {`string`} - \n\nProperty: placeholder"
+        },
+        {
+          "name": "prefix-icon",
+          "description": "`prefix-icon` {} - \n\n"
+        },
+        {
+          "name": "suffix-icon",
+          "description": "`suffix-icon` {} - \n\n"
+        }
+      ]
+    },
+    {
       "name": "ext-button",
       "description": "Events:\n\n  * `click` {`CustomEvent<MouseEvent>`} - \n\nAttributes:\n\n  * `label` {`string`} - \n\n  * `outlined` {`boolean`} - \n\n  * `prefix-icon` {} - \n\n  * `suffix-icon` {} - \n\nProperties:\n\n  * `prefixIcon` {`string`} - \n\n  * `suffixIcon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `outlined` {`boolean`} - \n\n  * `_label` {`string`} - \n\n  * `_outlined` {`boolean`} - \n\n  * `_prefixIcon` {`string`} - \n\n  * `_prefixIconElement` {`HTMLElement | null`} - \n\n  * `_suffixIcon` {`string`} - \n\n  * `_suffixIconElement` {`HTMLElement | null`} - \n\n  * `_buttonElement` {`HTMLButtonElement`} - \n\n  * `_labelElement` {`HTMLSpanElement`} - \n\n  * `_onClickHandler` - ",
       "attributes": [

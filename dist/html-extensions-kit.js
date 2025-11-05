@@ -27,6 +27,7 @@ class ExtButton extends HTMLExtensionElement {
     this._suffixIcon = "";
     this._suffixIconElement = null;
     this._buttonElement = document.createElement("button");
+    this._buttonElement.className = "ext-button-container";
     this._buttonElement.type = "button";
     this._buttonElement.textContent = this._label;
     this._labelElement = document.createElement("span");

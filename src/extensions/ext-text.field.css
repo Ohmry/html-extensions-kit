@@ -3,16 +3,16 @@
 ext-text-field {
   position: relative;
   display: block;
-  background-color: #fff;
-  border: 1px solid var(--border-color, #333);
+  background-color: var(--ext-background-color);
+  border: 1px solid var(--ext-border-color);
   border-radius: 10px;
   box-sizing: border-box;
   transition: border 0.2s;
-  color: var(--text-color, #333);
+  color: var(--ext-text-color);
 }
 
 ext-text-field.focused {
-  border: 1px solid var(--primary-color, #000);
+  border: 1px solid var(--ext-primary-color);
 }
 
 ext-text-field > div {
@@ -34,6 +34,6 @@ ext-text-field > div > input {
 
 ext-text-field > div > i {
   flex-shrink: 0;
-  color: var(--text-color, #333);
+  color: var(--ext-text-color);
   font-size: 1.1rem;
 }

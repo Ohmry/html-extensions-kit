@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
-// import { generateIndex } from './site/lib/index-generator';
 
 export default defineConfig({
   build: {
@@ -38,10 +37,5 @@ export default defineConfig({
       outDir: 'dist/types',
       include: ['src']
     })
-    // {
-    //   name: 'generate-index',
-    //   apply: 'build',
-    //   closeBundle: generateIndex
-    // }
   ]
 });
