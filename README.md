@@ -5,6 +5,15 @@ To view the documentation for this library, please visit [https://ohmry.github.i
 
 # Changelog
 
+### 0.3.2
+- Changed button width handling to make <ext-button> define its own size and inner <button> fill 100%
+- Updated script and style imports in index.html
+
+### 0.3.1
+- Add test script for extensions
+- Add `--ext` prefix to style root variables
+- Fix minor bugs
+
 ### 0.3.0
 
 - Added the `<ext-selectbox>` extension. (See [Document](https://ohmry.github.io/html-extensions-kit#extensions/ext-selectbox.md))
