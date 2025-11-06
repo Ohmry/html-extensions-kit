@@ -19,6 +19,7 @@ export default defineConfig({
       }
     },
     rollupOptions: {
+      input: ['src/index.ts'],
       external: [],
       output: {
         assetFileNames: 'html-extensions-kit.min.[ext]',
