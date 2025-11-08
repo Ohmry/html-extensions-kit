@@ -3,24 +3,20 @@ import './ext-text.field.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export class ExtTextField extends HTMLExtensionElement {
-  private _value: string;
   private _type: string;
-  private _placeholder: string;
   private _prefixIcon: string;
   private _suffixIcon: string;
   private _containerElement: HTMLDivElement;
   private _inputElement: HTMLInputElement;
   private _prefixIconElement: HTMLElement | null;
   private _suffixIconElement: HTMLElement | null;
-  private _onFocusHandler: (this: HTMLInputElement, ev: FocusEvent) => void;
-  private _onBlurHandler: (this: HTMLInputElement, ev: FocusEvent) => void;
-  // private _onInputHandler:
+
+  private _onFocusHandler: (e: FocusEvent) => void;
+  private _onBlurHandler: (e: FocusEvent) => void;
 
   constructor() {
     super();
-    this._value = '';
     this._type = 'text';
-    this._placeholder = '';
     this._prefixIcon = '';
     this._suffixIcon = '';
     this._containerElement = document.createElement('div');
@@ -28,33 +24,30 @@ export class ExtTextField extends HTMLExtensionElement {
     this._inputElement.type = this._type;
     this._prefixIconElement = null;
     this._suffixIconElement = null;
+
     this._onFocusHandler = () => this.classList.add('focused');
     this._onBlurHandler = () => this.classList.remove('focused');
-  }
-  render(): void {
-    if (this._prefixIconElement !== null) {
-      this._containerElement.appendChild(this._prefixIconElement);
-    }
-    this._containerElement.appendChild(this._inputElement);
-    if (this._suffixIconElement !== null) {
-      this._containerElement.appendChild(this._suffixIconElement);
-    }
 
-    this.innerHTML = '';
-    this.appendChild(this._containerElement);
+    this.addDelegatedElement(this._inputElement);
   }
-  connectedCallback(): void {
-    this._inputElement.addEventListener('focus', this._onFocusHandler);
-    this._inputElement.addEventListener('blur', this._onBlurHandler);
-    this.render();
+
+  static get observedAttributes(): string[] {
+    return ['type', 'value', 'placeholder', 'prefix-icon', 'suffix-icon', 'name'];
+  }
+
+  onConnectedCallback(): void {
+    this.addEventListener('focus', this._onFocusHandler);
+    this.addEventListener('blur', this._onBlurHandler);
     return;
   }
-  disconnectedCallback(): void {
-    this._inputElement.removeEventListener('focus', this._onFocusHandler);
-    this._inputElement.removeEventListener('blur', this._onBlurHandler);
+
+  onDisconnectedCallback(): void {
+    this.removeEventListener('focus', this._onFocusHandler);
+    this.removeEventListener('blur', this._onBlurHandler);
     return;
   }
-  attributeChangedCallback?(name: string, _: string | null, newValue: string | null): void {
+
+  onAttributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
     switch (name) {
       case 'type':
         this.type = newValue || 'text';
@@ -71,32 +64,72 @@ export class ExtTextField extends HTMLExtensionElement {
       case 'suffix-icon':
         this.suffixIcon = newValue;
         break;
+      case 'name':
+        this.name = newValue;
+        break;
     }
+    this.onPropertyChanged(name, oldValue, newValue);
   }
-  adoptedCallback?(): void {
+
+  onAdoptedCallback(): void {
     return;
   }
 
-  static get observedAttributes(): string[] {
-    return ['type', 'value', 'placeholder', 'prefix-icon', 'suffix-icon'];
+  onRender(): void {
+    if (this._prefixIcon !== '') {
+      if (this._prefixIconElement == null) {
+        this._prefixIconElement = document.createElement('i');
+      }
+      this._prefixIconElement.className = `bi bi-${this._prefixIcon}`;
+      this._containerElement.appendChild(this._prefixIconElement);
+    } else {
+      if (this._prefixIconElement != null) {
+        this._prefixIconElement.remove();
+        this._prefixIconElement = null;
+      }
+    }
+
+    this._containerElement.appendChild(this._inputElement);
+
+    if (this._suffixIcon !== '') {
+      if (this._suffixIconElement == null) {
+        this._suffixIconElement = document.createElement('i');
+      }
+      this._suffixIconElement.className = `bi bi-${this._suffixIcon}`;
+      this._containerElement.appendChild(this._suffixIconElement);
+    } else {
+      if (this._suffixIconElement != null) {
+        this._suffixIconElement.remove();
+        this._suffixIconElement = null;
+      }
+    }
+
+    this.innerHTML = '';
+    this.appendChild(this._containerElement);
   }
 
   public get value(): string {
-    return this._value;
+    return this._inputElement.value;
   }
 
   public set value(v: string | null) {
-    this._value = v || '';
-    this._inputElement.value = this._value;
+    this._inputElement.value = v || '';
+  }
+
+  public get name(): string {
+    return this._inputElement.name;
+  }
+
+  public set name(v: string | null) {
+    this._inputElement.name = v || '';
   }
 
   public get placeholder(): string {
-    return this._placeholder;
+    return this._inputElement.placeholder;
   }
 
   public set placeholder(v: string | null) {
-    this._placeholder = v || '';
-    this._inputElement.placeholder = this._placeholder;
+    this._inputElement.placeholder = v || '';
   }
 
   public get type(): string {
@@ -114,16 +147,6 @@ export class ExtTextField extends HTMLExtensionElement {
 
   public set prefixIcon(v: string | null) {
     this._prefixIcon = v || '';
-    if (this._prefixIcon) {
-      if (this._prefixIconElement == null) {
-        this._prefixIconElement = document.createElement('i');
-      }
-      this._prefixIconElement.className = `bi bi-${this._prefixIcon}`;
-    } else if (this._prefixIconElement !== null) {
-      this._prefixIconElement.remove();
-      this._prefixIconElement = null;
-    }
-    this.render();
   }
 
   public get suffixIcon(): string {
@@ -141,6 +164,5 @@ export class ExtTextField extends HTMLExtensionElement {
       this._suffixIconElement.remove();
       this._suffixIconElement = null;
     }
-    this.render();
   }
 }

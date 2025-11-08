@@ -1,6 +1,6 @@
 {
   "name": "html-extensions-kit",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A library that provides extended HTML elements for web development.",
   "type": "module",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "build": "tsc && pnpm run build:docs && pnpm run lint && vitest run && vite build",
     "lint": "prettier . --write && eslint . --fix",
     "format": "prettier . --write",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "keywords": [],
   "author": "Ohmry <o.ohmry@gmail.com>",

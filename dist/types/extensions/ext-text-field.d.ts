@@ -1,8 +1,6 @@
 import { HTMLExtensionElement } from './html-extension-element';
 export declare class ExtTextField extends HTMLExtensionElement {
-    private _value;
     private _type;
-    private _placeholder;
     private _prefixIcon;
     private _suffixIcon;
     private _containerElement;
@@ -12,14 +10,16 @@ export declare class ExtTextField extends HTMLExtensionElement {
     private _onFocusHandler;
     private _onBlurHandler;
     constructor();
-    render(): void;
-    connectedCallback(): void;
-    disconnectedCallback(): void;
-    attributeChangedCallback?(name: string, _: string | null, newValue: string | null): void;
-    adoptedCallback?(): void;
     static get observedAttributes(): string[];
+    onConnectedCallback(): void;
+    onDisconnectedCallback(): void;
+    onAttributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
+    onAdoptedCallback(): void;
+    onRender(): void;
     get value(): string;
     set value(v: string | null);
+    get name(): string;
+    set name(v: string | null);
     get placeholder(): string;
     set placeholder(v: string | null);
     get type(): string;

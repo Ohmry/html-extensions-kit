@@ -15,14 +15,14 @@ export declare class ExtSelectbox extends HTMLExtensionElement {
     private _onContainerClickHandler;
     private _onItemClickHandler;
     constructor();
-    connectedCallback(): void;
-    disconnectedCallback(): void;
-    attributeChangedCallback?(name: string, oldValue: string | null, newValue: string | null): void;
-    adoptedCallback?(): void;
-    render(): void;
     static get observedAttributes(): string[];
+    onConnectedCallback(): void;
+    onDisconnectedCallback(): void;
+    onAttributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
+    onAdoptedCallback(): void;
+    onRender(): void;
     get value(): string;
-    set value(v: string);
+    set value(v: string | null);
     get dataList(): {
         label: string;
         value: string;

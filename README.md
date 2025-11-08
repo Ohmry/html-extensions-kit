@@ -5,11 +5,22 @@ To view the documentation for this library, please visit [https://ohmry.github.i
 
 # Changelog
 
+### 0.3.3
+
+- Added event system with PropertyChangeEvent and ValueChangeEvent classes
+- Added HTMLEventUtils for event cloning and delegation
+- Improved event delegation in HTMLExtensionElement using HTMLEventUtils
+- Added onPropertyChanged method to HTMLExtensionElement for property change handling
+- Added test script for ext-selectbox
+- Updated documentation for ext-button
+
 ### 0.3.2
+
 - Changed button width handling to make <ext-button> define its own size and inner <button> fill 100%
 - Updated script and style imports in index.html
 
 ### 0.3.1
+
 - Add test script for extensions
 - Add `--ext` prefix to style root variables
 - Fix minor bugs

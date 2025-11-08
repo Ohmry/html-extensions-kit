@@ -12,9 +12,9 @@ export class ExtSelectbox extends HTMLExtensionElement {
   private _itemElements: HTMLDivElement[];
   private _isItemContainerOpen: boolean;
   private _onBlurHandler: (this: Document, e: FocusEvent) => void;
-  private _onContainerMouseOverHandler: (this: HTMLDivElement, e: FocusEvent) => void;
-  private _onContainerMouseOutHandler: (this: HTMLDivElement, e: FocusEvent) => void;
-  private _onContainerClickHandler: (this: HTMLDivElement, e: MouseEvent) => void;
+  private _onContainerMouseOverHandler: (this: HTMLElement, e: FocusEvent) => void;
+  private _onContainerMouseOutHandler: (this: HTMLElement, e: FocusEvent) => void;
+  private _onContainerClickHandler: (this: HTMLElement, e: MouseEvent) => void;
   private _onItemClickHandler: (this: HTMLDivElement, e: MouseEvent) => void;
 
   constructor() {
@@ -42,6 +42,7 @@ export class ExtSelectbox extends HTMLExtensionElement {
 
     this._onBlurHandler = (e: FocusEvent) => {
       if (
+        !this.contains(e.target as Node) &&
         !this._containerElement.contains(e.target as Node) &&
         !this._itemContainerElement.contains(e.target as Node)
       ) {
@@ -56,51 +57,56 @@ export class ExtSelectbox extends HTMLExtensionElement {
       this.render();
     };
     this._onItemClickHandler = (e: MouseEvent): void => {
+      e.stopPropagation();
       const item = e.target as HTMLDivElement;
       this._isItemContainerOpen = false;
-      this.value = item.dataset.value || '';
-      this._label = item.textContent || '';
+      this.setAttribute('value', item.dataset.value || '');
       this.render();
     };
+
+    this.addDelegatedElement(this._containerElement);
   }
 
-  connectedCallback(): void {
-    this.render();
-    document.addEventListener('mousedown', this._onBlurHandler);
-    this._containerElement.addEventListener('mouseover', this._onContainerMouseOverHandler);
-    this._containerElement.addEventListener('mouseout', this._onContainerMouseOutHandler);
-    this._containerElement.addEventListener('click', this._onContainerClickHandler);
-    this._itemElements.forEach((element) =>
-      element.addEventListener('click', this._onItemClickHandler)
-    );
+  static get observedAttributes(): string[] {
+    return ['value'];
   }
-  disconnectedCallback(): void {
-    document.removeEventListener('mousedown', this._onBlurHandler);
-    this._containerElement.removeEventListener('mouseover', this._onContainerMouseOverHandler);
-    this._containerElement.removeEventListener('mouseout', this._onContainerMouseOutHandler);
-    this._containerElement.removeEventListener('click', this._onContainerClickHandler);
-    this._itemElements.forEach((element) =>
-      element.removeEventListener('click', this._onItemClickHandler)
-    );
+  onConnectedCallback(): void {
+    this._itemElements.forEach((element) => {
+      element.addEventListener('click', this._onItemClickHandler);
+    });
+    document.addEventListener('click', this._onBlurHandler);
+    this.addEventListener('mouseover', this._onContainerMouseOverHandler);
+    this.addEventListener('mouseout', this._onContainerMouseOutHandler);
+    this.addEventListener('click', this._onContainerClickHandler);
+    return;
   }
-  attributeChangedCallback?(name: string, oldValue: string | null, newValue: string | null): void {
+  onDisconnectedCallback(): void {
+    this._itemElements.forEach((element) => {
+      element.removeEventListener('click', this._onItemClickHandler);
+    });
+    document.removeEventListener('click', this._onBlurHandler);
+    this.removeEventListener('mouseover', this._onContainerMouseOverHandler);
+    this.removeEventListener('mouseout', this._onContainerMouseOutHandler);
+    this.addEventListener('click', this._onContainerClickHandler);
+    return;
+  }
+  onAttributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
     switch (name) {
       case 'value':
         if (oldValue != newValue) {
           const item = this._dataList.find((item) => item.value === newValue);
           this._label = item?.label || '';
-          this.value = item?.value || '';
+          this._value = item?.value || '';
         }
         break;
     }
+    this.onPropertyChanged(name, oldValue, newValue);
   }
-  adoptedCallback?(): void {
-    throw new Error('Method not implemented.');
+  onAdoptedCallback(): void {
+    return;
   }
-  render(): void {
+  onRender(): void {
     this._valueElement.textContent = this._label;
-    this.setAttribute('value', this._value);
-
     this._containerElement.appendChild(this._valueElement);
     this._containerElement.appendChild(this._downIconElement);
 
@@ -114,17 +120,13 @@ export class ExtSelectbox extends HTMLExtensionElement {
     }
   }
 
-  static get observedAttributes(): string[] {
-    return ['value'];
-  }
-
   public get value(): string {
     return this._value;
   }
 
-  public set value(v: string) {
-    this._value = v;
-    this.render();
+  public set value(v: string | null) {
+    this._value = v || '';
+    this.setAttribute('value', this._value);
   }
 
   public get dataList(): { label: string; value: string }[] {
