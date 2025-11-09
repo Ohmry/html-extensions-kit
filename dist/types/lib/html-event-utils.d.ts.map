@@ -1,1 +1,0 @@
-{"version":3,"file":"html-event-utils.d.ts","sourceRoot":"","sources":["../../../src/lib/html-event-utils.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,gBAAgB;IAC/B,eAAe,CAAC,EAAE,MAAM,GAAG,SAAS,CAAC;IACrC,MAAM,CAAC,EAAE,WAAW,GAAG,SAAS,CAAC;CAClC;AAED,qBAAa,cAAc;WACX,KAAK,CAAC,CAAC,SAAS,KAAK,EAAE,CAAC,EAAE,CAAC,GAAG,CAAC;CAwR9C"}

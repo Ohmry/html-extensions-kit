@@ -5,4 +5,3 @@ export interface HTMLEventOptions {
 export declare class HTMLEventUtils {
     static clone<T extends Event>(e: T): T;
 }
-//# sourceMappingURL=html-event-utils.d.ts.map

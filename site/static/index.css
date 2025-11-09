@@ -111,7 +111,7 @@ main > div.container > h4 {
   font-weight: normal;
 }
 
-main > div.container span.inline-code {
+/* main > div.container span.inline-code {
   background-color: #dbdbdb;
   border-radius: 10px;
   padding: 3px 5px;
@@ -128,7 +128,7 @@ main > div.container code.code-block {
   font-family: 'Noto Sans', sans-serif !important;
   font-style: italic;
   line-height: 1.5;
-}
+} */
 
 main > div.container > table {
   position: relative;

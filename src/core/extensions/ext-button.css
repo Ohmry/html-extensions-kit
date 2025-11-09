@@ -1,3 +1,5 @@
+@import '../../theme/basic.css';
+
 ext-button {
   position: relative;
   display: block;

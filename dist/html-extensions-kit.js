@@ -1,7 +1,4 @@
 class PropertyChangeEvent extends CustomEvent {
-  name;
-  oldValue;
-  newValue;
   constructor(name, oldValue, newValue, options) {
     super("property-change", {
       ...options,
@@ -300,8 +297,16 @@ class HTMLEventUtils {
   }
 }
 class HTMLExtensionElement extends HTMLElement {
-  _delegatedElements = [];
-  _delegatedElementEvents = /* @__PURE__ */ new WeakMap();
+  constructor() {
+    super(...arguments);
+    this._delegatedElements = [];
+    this._delegatedElementEvents = /* @__PURE__ */ new WeakMap();
+    this._handleEventDelegator = (e) => {
+      e.stopPropagation();
+      const cloneEvent = HTMLEventUtils.clone(e);
+      this.dispatchEvent(cloneEvent);
+    };
+  }
   /**
    * Called when the element is added to the document's DOM.
    */
@@ -366,17 +371,6 @@ class HTMLExtensionElement extends HTMLElement {
     }
   }
   /**
-   * Handles delegated events by cloning and re-dispatching them on this element.
-   * Stops event propagation to prevent duplicate handling.
-   *
-   * @param e The event to delegate
-   */
-  _handleEventDelegator = (e) => {
-    e.stopPropagation();
-    const cloneEvent = HTMLEventUtils.clone(e);
-    this.dispatchEvent(cloneEvent);
-  };
-  /**
    * Attaches event listeners to all delegated elements for event delegation.
    */
   _attachEventDelegator() {
@@ -426,14 +420,6 @@ class HTMLExtensionElement extends HTMLElement {
   // static get observedAttributes(): string[] { return []; }
 }
 class ExtButton extends HTMLExtensionElement {
-  _label;
-  _outlined;
-  _prefixIcon;
-  _suffixIcon;
-  _buttonElement;
-  _labelElement;
-  _prefixIconElement;
-  _suffixIconElement;
   constructor() {
     super();
     this._label = "";
@@ -536,20 +522,6 @@ class ExtButton extends HTMLExtensionElement {
   }
 }
 class ExtSelectbox extends HTMLExtensionElement {
-  _value;
-  _label;
-  _dataList;
-  _containerElement;
-  _downIconElement;
-  _valueElement;
-  _itemContainerElement;
-  _itemElements;
-  _isItemContainerOpen;
-  _onBlurHandler;
-  _onContainerMouseOverHandler;
-  _onContainerMouseOutHandler;
-  _onContainerClickHandler;
-  _onItemClickHandler;
   constructor() {
     super();
     this._dataList = Array.from(this.querySelectorAll("option")).map((option) => ({
@@ -656,15 +628,6 @@ class ExtSelectbox extends HTMLExtensionElement {
   }
 }
 class ExtTextField extends HTMLExtensionElement {
-  _type;
-  _prefixIcon;
-  _suffixIcon;
-  _containerElement;
-  _inputElement;
-  _prefixIconElement;
-  _suffixIconElement;
-  _onFocusHandler;
-  _onBlurHandler;
   constructor() {
     super();
     this._type = "text";
@@ -794,7 +757,7 @@ class ExtTextField extends HTMLExtensionElement {
     }
   }
 }
-customElements.define("ext-text-field", ExtTextField);
 customElements.define("ext-button", ExtButton);
 customElements.define("ext-selectbox", ExtSelectbox);
+customElements.define("ext-text-field", ExtTextField);
 //# sourceMappingURL=html-extensions-kit.js.map

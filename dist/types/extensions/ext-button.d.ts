@@ -24,4 +24,3 @@ export declare class ExtButton extends HTMLExtensionElement {
     get suffixIcon(): string;
     set suffixIcon(v: string | null);
 }
-//# sourceMappingURL=ext-button.d.ts.map

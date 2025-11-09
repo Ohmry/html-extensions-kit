@@ -1,5 +1,5 @@
 import { PropertyChangeEvent } from '../events/property-change-event';
-import { HTMLEventUtils } from '../lib/html-event-utils';
+import { HTMLEventUtils } from '../events/html-event-utils';
 
 /**
  * Base class for HTML extension elements that provides lifecycle callbacks,

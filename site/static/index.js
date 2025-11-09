@@ -4,25 +4,31 @@ async function getDocs(path) {
     heading({ tokens, depth }) {
       const text = this.parser.parseInline(tokens);
       return `<h${depth}>${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</h${depth}>`;
-    },
-    code(code) {
-      const content = code.text
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replaceAll('\n', '<br/>')
-        .replaceAll(' ', '&nbsp;');
-      return `<code class="code-block">${content}</code>`;
-    },
-    codespan(code) {
-      const content = code.text
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replaceAll('\n', '<br/>')
-        .replaceAll(' ', '&nbsp;');
-      return `<span class="inline-code">${content}</span>`;
     }
+    // code(code) {
+    //   const content = code.text
+    //     .replace(/</g, '&lt;')
+    //     .replace(/>/g, '&gt;')
+    //     .replaceAll('\n', '<br/>')
+    //     .replaceAll(' ', '&nbsp;');
+    //   return `<code class="code-block">${content}</code>`;
+    // },
+    // codespan(code) {
+    //   const content = code.text
+    //     .replace(/</g, '&lt;')
+    //     .replace(/>/g, '&gt;')
+    //     .replaceAll('\n', '<br/>')
+    //     .replaceAll(' ', '&nbsp;');
+    //   return `<span class="inline-code">${content}</span>`;
+    // }
   };
   marked.use({ renderer });
+  marked.setOptions({
+    highlight(code, lang) {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      return hljs.highlight(code, { language }).value;
+    }
+  });
 
   try {
     const response = await fetch(path);
@@ -33,6 +39,10 @@ async function getDocs(path) {
     const container = document.querySelector('main > div.container');
     if (container) {
       container.innerHTML = marked.parse(markdown);
+      // Apply code block highlighting using highlight.js
+      container.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+      });
     } else {
       console.error('Could not find the container element.');
     }
@@ -45,7 +55,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const elements = document.querySelectorAll('body > nav > ul > li');
   elements.forEach((element) => {
     element.addEventListener('click', () => {
-      console.log(document.body.clientWidth);
       if (document.body.clientWidth <= 800) {
         const nav = document.querySelector('body > nav');
         if (nav) {

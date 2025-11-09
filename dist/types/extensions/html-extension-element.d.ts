@@ -97,4 +97,3 @@ export declare abstract class HTMLExtensionElement extends HTMLElement {
      */
     abstract onRender(): void;
 }
-//# sourceMappingURL=html-extension-element.d.ts.map

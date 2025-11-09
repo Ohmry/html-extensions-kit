@@ -1,40 +1,36 @@
 # HTML Extensions Kit
 
-A library that offers enhanced HTML elements for easier web development.
-To view the documentation for this library, please visit [https://ohmry.github.io/html-extensions-kit](https://ohmry.github.io/html-extensions-kit).
+HTML Extensions Kit is a library that provides extension elements to make web development easier.
 
-# Changelog
+This library provides custom elements for complex components that are difficult to implement with standard HTML elements. Using this library, you can easily use these complex components by declaring them as tags within your HTML file.
 
-### 0.3.3
+## Usage
 
-- Added event system with PropertyChangeEvent and ValueChangeEvent classes
-- Added HTMLEventUtils for event cloning and delegation
-- Improved event delegation in HTMLExtensionElement using HTMLEventUtils
-- Added onPropertyChanged method to HTMLExtensionElement for property change handling
-- Added test script for ext-selectbox
-- Updated documentation for ext-button
+### In the Browser
 
-### 0.3.2
+Add the following script and style, then declare the tag you want to use in your HTML:
 
-- Changed button width handling to make <ext-button> define its own size and inner <button> fill 100%
-- Updated script and style imports in index.html
+```html
+<script src="https://unpkg.com/html-extensions-kit/dist/core/html-extensions-kit.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/html-extensions-kit/dist/core/html-extensions-kit.min.css"
+/>
+```
 
-### 0.3.1
+#### Example
 
-- Add test script for extensions
-- Add `--ext` prefix to style root variables
-- Fix minor bugs
+```html
+<!-- Button -->
+<ext-button label="Button"></ext-button>
 
-### 0.3.0
+<!-- Text Field -->
+<ext-text-field placeholder="This Text Field"></ext-text-field>
 
-- Added the `<ext-selectbox>` extension. (See [Document](https://ohmry.github.io/html-extensions-kit#extensions/ext-selectbox.md))
-
-### 0.2.0
-
-- Added the `<ext-button>` extension. (See [Document](https://ohmry.github.io/html-extensions-kit#extensions/ext-button.md))
-- Updated the website documentation format to use Markdown.
-
-### 0.1.0
-
-- Launched the website to introduce and document the library.
-- Added the `<ext-text-field>` extension. (See [Document](https://ohmry.github.io/html-extensions-kit#extensions/ext-text-field.md))
+<!-- Selectbox -->
+<ext-selectbox>
+  <option value="A">Label A</option>
+  <option value="B">Label B</option>
+  <option value="C">Label C</option>
+</ext-selectbox>
+```

@@ -28,4 +28,3 @@ export declare class ExtSelectbox extends HTMLExtensionElement {
         value: string;
     }[];
 }
-//# sourceMappingURL=ext-selectbox.d.ts.map

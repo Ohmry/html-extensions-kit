@@ -8,4 +8,3 @@ export declare class PropertyChangeEvent extends CustomEvent<{
     newValue: unknown;
     constructor(name: string, oldValue: unknown, newValue: unknown, options?: EventInit);
 }
-//# sourceMappingURL=property-change-event.d.ts.map

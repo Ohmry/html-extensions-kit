@@ -29,4 +29,3 @@ export declare class ExtTextField extends HTMLExtensionElement {
     get suffixIcon(): string;
     set suffixIcon(v: string | null);
 }
-//# sourceMappingURL=ext-text-field.d.ts.map
