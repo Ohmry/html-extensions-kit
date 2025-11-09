@@ -7,7 +7,7 @@ body {
   min-width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: #f7f7f7;
+  background-color: #fff;
   font-size: 15px;
 }
 
@@ -16,8 +16,19 @@ nav {
   width: 250px;
   box-sizing: border-box;
   padding: 10px 0;
+  background-color: #f7f7f7;
   border-right: 1px solid #ddd;
   overflow: auto;
+}
+
+nav > header > h1 {
+  font-size: 1.2rem;
+  margin: 0.67rem 0 0 0;
+  padding: 0 10px;
+}
+
+nav > header > button {
+  display: none;
 }
 
 nav > h1 {
@@ -66,46 +77,52 @@ nav > ul > li:active {
 
 main {
   position: relative;
-  padding: 20px;
   flex: 1;
   overflow: auto;
 }
 
-main > ul {
+main > div.container {
+  position: relative;
+  padding: 0 20px;
+}
+
+main > div.container > ul {
   position: relative;
   margin: 0;
   padding: 0 0 0 30px;
 }
 
-main > ul > li:not(:last-child) {
+main > div.container > ul > li:not(:last-child) {
   margin: 0 0 8px 0;
 }
 
-main > h2 {
+main > div.container > h2 {
   margin: 2rem 0 1rem 0;
   padding: 0 0 0.5rem 0;
   border-bottom: 1px solid #ddd;
 }
 
-main > h3 {
+main > div.container > h3 {
   font-size: 1rem;
 }
 
-main > h4 {
+main > div.container > h4 {
   font-size: 1rem;
   font-weight: normal;
 }
 
-main > p {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+main > div.container span.inline-code {
+  background-color: #dbdbdb;
+  border-radius: 10px;
+  padding: 3px 5px;
+  line-height: 1.5;
 }
 
-main code {
+main > div.container code.code-block {
   position: relative;
   display: block;
   padding: 10px;
+  margin: 10px 0;
   background-color: #dbdbdb;
   border-radius: 10px;
   font-family: 'Noto Sans', sans-serif !important;
@@ -113,18 +130,107 @@ main code {
   line-height: 1.5;
 }
 
-main > table {
+main > div.container > table {
   position: relative;
   width: 100%;
   table-layout: auto;
   border-collapse: collapse;
 }
-main > table th,
-main > table td {
+main > div.container > table th,
+main > div.container > table td {
   border: 1px solid #aaa;
   text-align: left;
   padding: 10px;
 }
-main > table th {
+main > div.container > table th {
   background-color: #ddd;
+}
+
+main > div.header {
+  display: none;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+main > div.header > button {
+  position: relative;
+  padding: 10px;
+  outline: 0;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+main > div.header > button:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+main > div.header > button:active {
+  background-color: #bbb;
+}
+
+main > div.header > h1 {
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  nav {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    z-index: 99;
+  }
+
+  nav > header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  nav > header > h1 {
+    padding: 0;
+  }
+
+  nav > header > button {
+    display: block;
+    position: relative;
+    height: 24px;
+    width: 24px;
+    font-size: 1rem;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    border-radius: 10px;
+  }
+
+  nav > header > button:hover {
+    background-color: #ddd;
+    cursor: pointer;
+  }
+
+  nav > header > button:active {
+    background-color: #bbb;
+  }
+
+  nav > header > button > i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main > div.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
 }

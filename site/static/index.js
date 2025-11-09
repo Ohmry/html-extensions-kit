@@ -4,6 +4,22 @@ async function getDocs(path) {
     heading({ tokens, depth }) {
       const text = this.parser.parseInline(tokens);
       return `<h${depth}>${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</h${depth}>`;
+    },
+    code(code) {
+      const content = code.text
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replaceAll('\n', '<br/>')
+        .replaceAll(' ', '&nbsp;');
+      return `<code class="code-block">${content}</code>`;
+    },
+    codespan(code) {
+      const content = code.text
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replaceAll('\n', '<br/>')
+        .replaceAll(' ', '&nbsp;');
+      return `<span class="inline-code">${content}</span>`;
     }
   };
   marked.use({ renderer });
@@ -14,11 +30,11 @@ async function getDocs(path) {
       throw new Error(`Failed to fetch ${path}`);
     }
     const markdown = await response.text();
-    const main = document.querySelector('main');
-    if (main) {
-      main.innerHTML = marked.parse(markdown);
+    const container = document.querySelector('main > div.container');
+    if (container) {
+      container.innerHTML = marked.parse(markdown);
     } else {
-      console.error('Could not find the main element.');
+      console.error('Could not find the container element.');
     }
   } catch (err) {
     console.error(err);
@@ -26,15 +42,43 @@ async function getDocs(path) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  const documents = document.querySelectorAll('body > nav > ul > li');
-  documents.forEach((document) => {
-    document.addEventListener('click', () => getDocs(document.dataset.link));
+  const elements = document.querySelectorAll('body > nav > ul > li');
+  elements.forEach((element) => {
+    element.addEventListener('click', () => {
+      console.log(document.body.clientWidth);
+      if (document.body.clientWidth <= 800) {
+        const nav = document.querySelector('body > nav');
+        if (nav) {
+          nav.style.display = '';
+        }
+      }
+      getDocs(element.dataset.link);
+    });
   });
 
   if (window.location.hash) {
-    console.log(window.location.hash.substring(1));
     getDocs(`./site/docs/${window.location.hash.substring(1)}`);
   } else {
     getDocs('./site/docs/quick-start.md');
+  }
+
+  const btnNav = document.getElementById('btnNav');
+  if (btnNav) {
+    btnNav.addEventListener('click', () => {
+      const nav = document.querySelector('body > nav');
+      if (nav) {
+        nav.style.display = 'block';
+      }
+    });
+  }
+
+  const btnClose = document.getElementById('btnClose');
+  if (btnClose) {
+    btnClose.addEventListener('click', () => {
+      const nav = document.querySelector('body > nav');
+      if (nav) {
+        nav.style.display = 'none';
+      }
+    });
   }
 });

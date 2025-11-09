@@ -19,7 +19,13 @@
   </head>
   <body>
     <nav>
-      <h1>HTML Extensions Kit</h1>
+      <header>
+        <h1>HTML Extensions Kit</h1>
+        <button id="btnClose">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </header>
+
       <version>v0.3.3</version>
       <h2>Guide</h2>
       <ul id="guide">
@@ -34,7 +40,25 @@
         <li data-link="./site/docs/extensions/ext-text-field.md">&lt;ext-text-field&gt;</li>
       </ul>
     </nav>
-    <main></main>
+    <main>
+      <div class="header">
+        <button id="btnNav">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect y="4" width="24" height="3" rx="1.5" fill="currentColor"></rect>
+            <rect y="10.5" width="24" height="3" rx="1.5" fill="currentColor"></rect>
+            <rect y="17" width="24" height="3" rx="1.5" fill="currentColor"></rect>
+          </svg>
+        </button>
+        <h1>HTMl Extensions Kit</h1>
+      </div>
+      <div class="container"></div>
+    </main>
     <script src="./site/static/index.js"></script>
   </body>
 </html>

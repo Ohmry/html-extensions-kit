@@ -12,21 +12,31 @@
 
 <ext-button style="width: 160px; height: 45px;" label="Button"></ext-button>
 
-`<ext-button label="Button"></ext-button>`
+```
+<ext-button label="Button"></ext-button>
+```
 
 ### Outlined
 
 <ext-button style="width: 160px; height: 45px;" label="Outlined Button" outlined></ext-button>
 
-`<ext-button label="Outlined Button" outlined></ext-button>`
+```
+<ext-button label="Outlined Button" outlined></ext-button>
+```
 
 ### Icon
 
 <ext-button style="width: 160px; height: 45px;" label="Icon Button" prefix-icon="search"></ext-button>
-`<ext-button label="Icon Button" prefix-icon="search"></ext-button>`
+
+```
+<ext-button label="Icon Button" prefix-icon="search"></ext-button>
+```
 
 <ext-button style="width: 160px; height: 45px;" label="Icon Button" suffix-icon="search"></ext-button>
-`<ext-button label="Icon Button" suffix-icon="search"></ext-button>`
+
+```
+<ext-button label="Icon Button" suffix-icon="search"></ext-button>
+```
 
 # Properties
 
