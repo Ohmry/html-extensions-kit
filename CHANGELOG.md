@@ -1,5 +1,19 @@
 # Changelog
 
+### 0.3.5
+
+- Fixed the usage instructions for CDN in the README.md to use the correct version and paths.
+
+### 0.3.4
+
+- Move core source files to src/core/ directory
+- Move test files to src/core/**test**/
+- Move tools to src/tools/ directory
+- Split TypeScript config into base and core configs
+- Add separate vite and vitest configs for core
+- Update build scripts and package.json
+- Update dist files and type definitions
+
 ### 0.3.3
 
 - Added event system with PropertyChangeEvent and ValueChangeEvent classes

@@ -11,11 +11,8 @@ This library provides custom elements for complex components that are difficult 
 Add the following script and style, then declare the tag you want to use in your HTML:
 
 ```html
-<script src="https://unpkg.com/html-extensions-kit/dist/core/html-extensions-kit.min.js"></script>
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/html-extensions-kit/dist/core/html-extensions-kit.min.css"
-/>
+<script src="https://cdn.jsdelivr.net/npm/html-extensions-kit@0.3.5/dist/html-extensions-kit.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/html-extensions-kit@0.3.5/dist/html-extensions-kit.min.css" />
 ```
 
 #### Example

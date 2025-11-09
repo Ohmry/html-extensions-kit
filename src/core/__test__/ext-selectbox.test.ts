@@ -63,9 +63,7 @@ describe('ExtSelectbox Tests', () => {
     `;
     const extSelectbox = document.querySelector('ext-selectbox') as ExtSelectbox;
     extSelectbox.click();
-    const itemContainer = extSelectbox.querySelector(
-      'div.ext-selectbox-item-container'
-    ) as HTMLDivElement;
+    const itemContainer = extSelectbox.querySelector('div.ext-selectbox-item-container') as HTMLDivElement;
     expect(itemContainer).not.toBeNull();
     expect(itemContainer).instanceOf(HTMLDivElement);
   });
@@ -81,9 +79,7 @@ describe('ExtSelectbox Tests', () => {
     const extSelectbox = document.querySelector('ext-selectbox') as ExtSelectbox;
     extSelectbox.click();
     expect(extSelectbox.value).toBe('A');
-    const itemContainer = document.querySelector(
-      'ext-selectbox > div.ext-selectbox-item-container'
-    ) as HTMLDivElement;
+    const itemContainer = document.querySelector('ext-selectbox > div.ext-selectbox-item-container') as HTMLDivElement;
     const itemB = itemContainer.querySelector('div[data-value="B"]') as HTMLOptionElement;
     itemB.click();
     expect(extSelectbox.value).toBe('B');

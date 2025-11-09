@@ -59,11 +59,7 @@ export abstract class HTMLExtensionElement extends HTMLElement {
    * @param oldValue The previous value of the attribute
    * @param newValue The new value of the attribute
    */
-  abstract onAttributeChangedCallback(
-    name: string,
-    oldValue: string | null,
-    newValue: string | null
-  ): void;
+  abstract onAttributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
 
   /**
    * Called when the element is adopted into a new document.
@@ -154,11 +150,7 @@ export abstract class HTMLExtensionElement extends HTMLElement {
    * @param oldValue The previous property value
    * @param newValue The new property value
    */
-  protected onPropertyChanged(
-    name: string,
-    oldValue: string | null,
-    newValue: string | null
-  ): void {
+  protected onPropertyChanged(name: string, oldValue: string | null, newValue: string | null): void {
     if (oldValue != newValue) {
       const propertyChangeEvent = new PropertyChangeEvent(name, oldValue, newValue);
       this.dispatchEvent(propertyChangeEvent);

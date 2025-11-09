@@ -1,6 +1,6 @@
 {
   "name": "html-extensions-kit",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "A library that provides extension elements to make web development easier.",
   "type": "module",
   "main": "dist/html-extensions-kit.min.js",
